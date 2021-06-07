@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
 from flask_session import Session
 from config import config
-
+from .modules.index import index_blu
 
 
 def Set_log(config_name):
@@ -32,6 +32,8 @@ def create_app(config_name):
     Set_log(config_name)
 
     app = Flask(__name__)
+
+    app.register_blueprint(index_blu)
 
     # 配置
     app.config.from_object(config[config_name])
